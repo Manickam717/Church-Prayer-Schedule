@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Agenda</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header img {
+            top: 20px;
+            width: 150px;
+            height: auto;
+            border: 2px solid #000000;
+            /* Adjust color and thickness */
+            border-radius: 8px;
+            /* Optional: to make the border rounded */
+            padding: 5px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            text-align: center;
+            color: #000000;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #e7e7e7;
+            border-radius: 4px;
+            position: relative;
+            cursor: pointer;
+            font-family: 'Times New Roman', Times, serif;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .lyrics {
+            display: none;
+            padding: 10px;
+            background-color: #d3d3d3;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .dropdown-arrow {
+            float: right;
+            font-size: 18px;
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        ul ul {
+            display: none;
+            padding-left: 20px;
+        }
+
+        ul ul.show {
+            display: block;
+        }
+
+        .logo-container {
+            flex: 1;
+            text-align: center;
+            margin: 0px;
+        }
+
+        .text-container {
+            flex: 2;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .yuvs-log {
+            height: 300px;
+            width: 300px;
+
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .header img {
+                max-width: 70%;
+                /* Adjust the width for better spacing */
+                margin-bottom: 10px;
+            }
+
+            h2,
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            ul {
+                padding-left: 0;
+            }
+
+            li {
+                font-size: 0.9rem;
+            }
+
+            .logo-container {
+                margin-bottom: 0px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .header img {
+                max-width: 100%;
+            }
+
+            h2,
+            h3 {
+                font-size: 1rem;
+            }
+
+            ul {
+                padding-left: 0;
+            }
+
+            li {
+                font-size: 0.8rem;
+                padding: 8px;
+            }
+        }
+    </style>
+    <script>
+        function toggleLyrics(event) {
+            event.stopPropagation();  // Prevent the event from bubbling up to parent elements
+            var listItem = event.currentTarget;
+            var nestedList = listItem.querySelector('ul');
+            var arrow = listItem.querySelector('.dropdown-arrow');
+            var lyrics = listItem.querySelector('.lyrics');
+
+            // Toggle the nested list (if it exists)
+            if (nestedList) {
+                nestedList.classList.toggle('show');
+            }
+
+            // Toggle the lyrics (if it exists)
+            if (lyrics) {
+                if (lyrics.style.display === 'block') {
+                    lyrics.style.display = 'none';
+                } else {
+                    lyrics.style.display = 'block';
+                }
+            }
+
+            // Rotate the arrow
+            if (arrow) {
+                arrow.classList.toggle('open');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="./Churchlogo.png" alt="Church Logo">
+            </div>
+            <div class="text-container">
+                <h3>NORTH MADRAS MARTHOMA SYRIAN CHURCH</h3>
+                <h2>INTERCHURCH FELLOWSHIP</h2>
+                <p>"A time for interaction, praise and worship, devotion and games."</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: left;">Agenda</h3>
+        <ul>
+            <li style="color: #000000;">Opening Prayer - Angeline Alexander</li>
+            <li style="color: #000000;">Welcome Address - Jisha Shaji</li>
+            <li onclick="toggleLyrics(event)" style="color: #000000;">
+                Praise and Worship
+                <span class="dropdown-arrow">&#9660;</span>
+                <ul>
+                    <li onclick="toggleLyrics(event)">
+                        Goodness of God
+                        <span class="dropdown-arrow">&#9660;</span>
+                        <div class="lyrics">
+                            <p>
+                                I love You, Lord<br>
+                                Oh Your mercy never fails me<br>
+                                All my days,<br>
+                                I've been held in Your hands.<br>
+                                From the moment that I wake up,<br>
+                                Until I lay my head.<br>
+                                Oh I will sing of the goodness of God!<br><br>
+
+                                Ch: All my life You have been faithful<br>
+                                All my life You have been so, so good<br>
+                                With every breath that I am able<br>
+                                I will sing of the goodness of God<br><br>
+
+                                'Cause Your goodness is running, it's running after me<br>
+                                Your goodness is running, it's running after me<br>
+                                With my life laid down, I'm surrendered now, I give You everything<br>
+                                Your goodness is running, it's running after me
+                            </p>
+                        </div>
+                    </li>
+                    <li onclick="toggleLyrics(event)">
+                        Mercy is Falling
+                        <span class="dropdown-arrow">&#9660;</span>
+                        <div class="lyrics">
+                            <br>Mercy is falling, is falling, is falling.<br>
+                            Mercy it falls like the sweet spring rain.<br>
+                            Mercy is falling, is falling all over me. (2)<br><br>
+
+                            Hey, oh,<br>
+                            I receive Your mercy.<br>
+                            Hey, oh,<br>
+                            I receive Your grace.<br>
+                            Hey, oh,<br>
+                            I will dance forevermore. (2)<br><br>
+                        </div>
+                    </li>
+                    <li onclick="toggleLyrics(event)">
+                        Entha Parayaa
+                        <span class="dropdown-arrow">&#9660;</span>
+                        <div class="lyrics">
+                            <br>Entha parayya ...<br>
+                            Enna ippam cheyya ...<br>
+                            Kripayennallathe enna parayananne ...<br><br>
+
+                            Yeshu enne kantu<br>
+                            Thante chanku thannu<br>
+                            Chora koduthu enne<br>
+                            Thante swanthamaaki<br><br>
+
+                            Ullathu paranjaal<br>
+                            Njaanoru thallipoliyane<br>
+                            Appante sneham enne matimarichu...<br><br>
+
+                            Kaiyil irippu mosham... Aake mottam dosham ... Ullil ellam roksham ayirunnenne ...<br>
+                            Yeshuvin suvishesham... Ullil vanna shesham ....<br>
+                            Papangal ashesham maari poyille.<br><br>
+                        </div>
+                    </li>
+                    <li onclick="toggleLyrics(event)">
+                        Attitude
+                        <span class="dropdown-arrow">&#9660;</span>
+                        <div class="lyrics">
+                            <br>He was nine feet tall with a really big head<br>
+                            He would make you fall with what He said<br>
+                            Bronze in his armor, Iron in his spear<br>
+                            All who faced him trembled with fear<br>
+                            He had an attitude that mocked the army of God<br>
+                            He had an attitude that mocked the army of God<br><br>
+
+                            He was a little bitty boy with a sling in his hand<br>
+                            He played the harp for the worship band<br>
+                            He took 5 stones and a big step<br>
+                            He spun it around and hit his head<br>
+                            He had an attitude that says praise the Lord<br>
+                            He had an attitude that says no matter what, I'll praise the Lord<br><br>
+                        </div>
+                    </li>
+                    <li onclick="toggleLyrics(event)">
+                        In his time
+                        <span class="dropdown-arrow">&#9660;</span>
+                        <div class="lyrics">
+                            <br>In his time, in his time<br>
+                            He makes all things beautiful<br>
+                            In his time<br>
+                            Lord please show me everyday<br>
+                            As you're teaching me your way<br>
+                            That you do just what you say<br>
+                            In your time<br><br>
+
+                            In your time, in your time<br>
+                            You make all things beautiful<br>
+                            In your time<br>
+                            Lord my life to you I bring<br>
+                            May each song I have to sing<br>
+                            Be to you a lovely thing<br>
+                            In your time<br>
+                            Lord please show me everyday<br>
+                            As you teaching me your way<br>
+                            That you do just what you say<br>
+                            In your time<br><br>
+                        </div>
+                    </li>
+                    <li onclick="toggleLyrics(event)">
+                        Bhayamo
+                        <span class="dropdown-arrow">&#9660;</span>
+                        <div class="lyrics">
+                            <br>Bhayamo ini Ennil Sthhaanamilla<br>
+                            En Bhaaviyellaam Thaathan Karangalilaa<br>
+                            Niraasha Ini Enne Thodukayilla<br>
+                            Prathyaashayaal Anudinam Varddhikkatte<br><br>
+
+                            Yaahe Angennum En Daivam<br>
+                            Thalamura Thalamurayaayi<br>
+                            Yaahe Angente Sangketham<br>
+                            Thalamura Thalamurayaayi<br><br>
+
+                            Nee Mayngukilla Nee Urangukilla<br>
+                            Israayelin Paripaalakan Thaan (2)<br><br>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li onclick="toggleLyrics(event)" style="color: #000000;">
+                Bible Reading - Anshika Abraham
+                <span class="dropdown-arrow">&#9660;</span>
+                <ul>
+                    <li onclick="toggleLyrics(event)">
+                        Psalms Chapter: 46
+                    </li>
+                </ul>
+            </li>
+            <li style="color: #000000;">Icebreaker Session - Aashish Mathew</li>
+            <li style="color: #000000;">Message - Noah Mathew</li>
+            <li style="color: #000000;">Games - Sharon Varghese</li>
+            <li style="color: #000000;">Vote of Thanks - Vinu Roy</li>
+            <li style="color: #000000;">Closing Prayer - Tessia Titus</li>
+            <li style="color: #000000;">Benediction - Rev. Thomas George</li>
+        </ul>
+        <div class="logo-container">
+            <img src="./Yuvaslogo.png" alt="Yuvas Logo" class="yuvs-log">
+        </div>
+    </div>
+</body>
+
+</html>
